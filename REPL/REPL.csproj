@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24CC50A0-ED5F-4CD3-B232-9C72FD2B9AF8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>REPL</RootNamespace>
+    <AssemblyName>REPL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AST\DataPair.cs" />
+    <Compile Include="AST\Expressions\ArrayLiteral.cs" />
+    <Compile Include="AST\Expressions\BoolLiteral.cs" />
+    <Compile Include="AST\INodeVisitor.cs" />
+    <Compile Include="AST\NodeVisitor.cs" />
+    <Compile Include="AST\Statements\ControllStatement.cs" />
+    <Compile Include="AST\Statements\ExpressionStatement.cs" />
+    <Compile Include="AST\Expressions\ArrowFunction.cs" />
+    <Compile Include="AST\Expressions\AssignmentExpression.cs" />
+    <Compile Include="AST\CodeWriter.cs" />
+    <Compile Include="AST\Expressions\ConditionalExpression.cs" />
+    <Compile Include="AST\Expressions\ArrayLookupExpression.cs" />
+    <Compile Include="AST\Expressions\Expression.cs" />
+    <Compile Include="AST\Expressions\ExpressionType.cs" />
+    <Compile Include="AST\Expressions\InfixExpression.cs" />
+    <Compile Include="AST\Expressions\InvocationExpressionNode.cs" />
+    <Compile Include="AST\Expressions\NewExpression.cs" />
+    <Compile Include="AST\Expressions\NullLiteral.cs" />
+    <Compile Include="AST\Expressions\ObjectLiteral.cs" />
+    <Compile Include="AST\Expressions\ThisExpression.cs" />
+    <Compile Include="AST\Statements\FunctionBlock.cs" />
+    <Compile Include="AST\Statements\FunctionStatement.cs" />
+    <Compile Include="AST\Statements\IfStatement.cs" />
+    <Compile Include="AST\AstNode.cs" />
+    <Compile Include="AST\Expressions\NumberLiteral.cs" />
+    <Compile Include="AST\Statements\Block.cs" />
+    <Compile Include="AST\Script.cs" />
+    <Compile Include="AST\Statements\InlineBlock.cs" />
+    <Compile Include="AST\Statements\Statement.cs" />
+    <Compile Include="AST\Expressions\ObjectLookupExpressin.cs" />
+    <Compile Include="AST\Expressions\StringLiteral.cs" />
+    <Compile Include="AST\Expressions\UnaryExpression.cs" />
+    <Compile Include="AST\Expressions\VariableExpression.cs" />
+    <Compile Include="AST\Statements\StatementType.cs" />
+    <Compile Include="AST\Statements\VarStatement.cs" />
+    <Compile Include="AST\Statements\VoidStatement.cs" />
+    <Compile Include="AST\Statements\WhileStatement.cs" />
+    <Compile Include="Compiler.cs" />
+    <Compile Include="CoreApi.cs" />
+    <Compile Include="Function.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="Reflection.cs" />
+    <Compile Include="ReflectionConstants.cs" />
+    <Compile Include="Reflection\TypeBoxing.cs" />
+    <Compile Include="Scope.cs" />
+    <Compile Include="SyntaxError.cs" />
+    <Compile Include="Token.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\NameAttribute.cs" />
+    <Compile Include="Types\W_Array.cs" />
+    <Compile Include="Types\W_Bool.cs" />
+    <Compile Include="Types\W_Briefcase.cs" />
+    <Compile Include="Types\W_Delegate.cs" />
+    <Compile Include="Types\W_Function.cs" />
+    <Compile Include="Types\W_Null.cs" />
+    <Compile Include="Types\W_Number.cs" />
+    <Compile Include="Types\W_Object.cs" />
+    <Compile Include="Types\W_Script.cs" />
+    <Compile Include="Types\W_String.cs" />
+    <Compile Include="Types\W_Type.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

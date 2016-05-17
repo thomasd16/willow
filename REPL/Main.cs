@@ -33,7 +33,12 @@ namespace REPL
             //compiling function does scope resolution and a few optomizations
             Function function = new Function(script);
             function.Process();
-            Console.WriteLine(function);
+            
+            //Note the function which is the final post processed AST
+            //has a toString Method that returns a script that is functionally identical to the input
+            //Console.WriteLine(function);
+            
+            
             //W_Object is simply a dictionary that holds W_Type's
             //W_Object implements prototype based inheritance
             W_Object contextObject = new W_Object();
@@ -64,8 +69,7 @@ namespace REPL
             //Finaly the script is compiled into a delgate
             W_Script del = Compiler.CompileScript(function);
 
-
-            //Uncork the champagne we finally have code execution
+            //And then the script can be executed
             del(contextObject);
         }
     }

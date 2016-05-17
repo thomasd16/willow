@@ -1,2 +1,48 @@
+.print("This is an example Willow script");
+.print("It calculates fibonacci numbers a variaty of ways");
 
-.print("abcd".charCodeAt(1));
+//this is an example of the horrable O(n^2) fib function
+//that is tought in intro to programing classes
+//to demonstrate recursion
+fn recursiveFib(n) {
+	if(n<3)
+		return 1;
+	return recursiveFib(n-1)+recursiveFib(n-2);
+}
+
+//this function returns a lambda to generate fib numbers 
+//each invocation on the returned lambda returns the next number in the sequence
+fn lambdaFib() {
+	var current = 1, last = 0;
+	return () => {
+		var tmp = current;
+		current += last;
+		last = tmp;
+		return tmp;
+	};
+}
+
+//this function is the simplest O(n)
+fn sensibleFib(n) {
+	var current = 1, last = 0, tmp;
+	while(n-=1) {
+		tmp = current;
+		current += last;
+		last = tmp;
+	}
+	return current;
+}
+
+.print("Please enter a point in the fibonacci sequence you wish to calculate");
+var i = .readNumber();
+
+.printf("Value using sensibleFib {0}", sensibleFib(i));
+
+var tmp = i;
+var lambda = lambdaFib();
+while(tmp -=1) 
+	lambda();
+.printf("Value using lambdaFib {0}", lambda());
+
+.print("Calculationg value with recursion this may take forever if you entered a large number ");
+.print(recursiveFib(i));
